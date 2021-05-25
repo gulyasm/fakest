@@ -30,7 +30,5 @@ def generate(attributes:List[str], number:int) -> Dict:
     faker_attribures = [a for a in attributes if _get_distribution(a) in dir(fake)]
     faker_data = [{key: getattr(fake, key)() for key in faker_attribures} for _ in range(number)]
     numerical_data = [{f"value_{i}": get_number(attribute) for i,attribute in enumerate(numerical)} for _ in range(number)]
-    print(faker_data)
-    print(numerical_data)
     return [{**fake, **num} for fake, num in zip(faker_data, numerical_data)]
 
